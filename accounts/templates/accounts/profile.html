@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Profile</h2>
+<p><strong>Username:</strong> {{ request.user.username }}</p>
+<p><strong>Email:</strong> {{ request.user.email }}</p>
+<br>
+<a class="btn btn-warning" href="{% url 'edit' %}">Edit Profile</a>
+<a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>My Expenses</h2>
+<a class="btn btn-danger" href="{% url 'outcome_add' %}">+ Add New Expense</a>
+<table>
+    <tr>
+        <th>Date</th><th>Amount</th><th>Category</th><th>Actions</th>
+    </tr>
+    {% for outcome in outcomes %}
+    <tr>
+        <td>{{ outcome.date }}</td>
+        <td>${{ outcome.amount }}</td>
+        <td>{{ outcome.category.icon }} {{ outcome.category.name }}</td>
+        <td>
+            <a class="btn btn-warning" href="{% url 'outcome_edit' outcome.id %}">Edit</a>
+            <a class="btn btn-danger" href="{% url 'outcome_delete' outcome.id %}">Delete</a>
+        </td>
+    </tr>
+    {% empty %}
+        <tr><td colspan="4">No expense records yet.</td></tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

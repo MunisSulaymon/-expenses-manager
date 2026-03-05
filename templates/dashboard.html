@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<div class="cards">
+    <div class="card card-income">
+        <h3>Total Income</h3>
+        <p>${{ total_income }}</p>
+    </div>
+    <div class="card card-outcome">
+        <h3>Total Expenses</h3>
+        <p>${{ total_outcome }}</p>
+    </div>
+    <div class="card card-balance">
+        <h3>Balance</h3>
+        <p>${{ balance }}</p>
+    </div>
+</div>
+
+<h3>Recent Income</h3>
+<table>
+    <tr>
+        <th>Date</th><th>Amount</th><th>Category</th>
+    </tr>
+    {% for income in recent_incomes %}
+    <tr>
+        <td>{{ income.date }}</td>
+        <td>${{ income.amount }}</td>
+        <td>{{ income.category.icon }} {{ income.category.name }}</td>
+    </tr>
+    {% empty %}
+        <tr><td colspan="3">No income records yet.</td></tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<h3>Recent Expenses</h3>
+<table>
+    <tr>
+        <th>Date</th><th>Amount</th><th>Category</th>
+    </tr>
+    {% for outcome in recent_outcomes %}
+    <tr>
+        <td>{{ outcome.date }}</td>
+        <td>${{ outcome.amount }}</td>
+        <td>{{ outcome.category.icon }} {{ outcome.category.name }}</td>
+    </tr>
+    {% empty %}
+        <tr><td colspan="3">No expense records yet.</td></tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

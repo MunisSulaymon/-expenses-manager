@@ -61,4 +61,4 @@ A Django web application to track personal income and expenses.
 
 ## Author
 
-MunisSulaymon
+Munisbek Sulaymonov
